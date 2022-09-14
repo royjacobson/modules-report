@@ -40,6 +40,9 @@ Should work (in Visual Studio).
 ### Meson
 Pretty old blogpost [here](https://nibblestew.blogspot.com/2020/11/adding-very-preliminary-support-for-c.html).
 
+### Build2
+Build2 supports building modules with GCC since the start of 2021. [This](https://build2.org/blog/build2-cxx20-modules-gcc.xhtml) blog post has details on how to use it, and there is a [repository](https://github.com/build2/cxx20-modules-examples) with various usage examples.
+
 ## Standardization
 
 The modules related discussions in WG21 happen in 'SG15', the committee's study group dedicated to C++ tooling. Its mailing list archive is open and available [here](https://lists.isocpp.org/sg15).
