@@ -9,8 +9,8 @@ This document references a lot of work in progress, and will hopefully get outda
 ## Compilers Support
 
 ### MSVC
-MSVC have a complete implementation of modules, and work to support C++23's 
-`import std` is ongoing [here](https://github.com/microsoft/STL/issues/2930).
+MSVC have a complete implementation of modules. Support of C++23's 
+`import std` is has been merged to the STL and is expected to ship in VS2022 17.5, probably in early 2023.
 
 See [here](https://developercommunity.visualstudio.com/search?space=62&q=modules&stateGroup=active&sort=votes) for a list of reported compiler modules bugs.
 
