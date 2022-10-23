@@ -27,6 +27,9 @@ Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.or
 ### CMake
 There's been some recent progress. You can see changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and  [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
 
+The CMake strategy relies on the module scanning protocol from P1689R5, which means they rely on compiler support for this. There are GCC and Clang patches implementing this in preliminary review, but none of them are upstreamed yet. Until then only (very recent) MSVC will have this experimental CMake support.
+A stub project for using CMake with MSVC is available [here](https://github.com/GabrielDosReis/cmake-for-modules).
+
 [This](https://www.youtube.com/watch?v=hkefPcWySzI) recent talk details the goals of the CMake modules support.
 
 ### Bazel
@@ -43,9 +46,22 @@ Pretty old blogpost [here](https://nibblestew.blogspot.com/2020/11/adding-very-p
 ### Build2
 Build2 supports building modules with GCC since the start of 2021. [This](https://build2.org/blog/build2-cxx20-modules-gcc.xhtml) blog post has details on how to use it, and there is a [repository](https://github.com/build2/cxx20-modules-examples) with various usage examples.
 
+### xmake
+
+xmake seem to have a pretty good support for modules with all the big-three compilers, having rolled out their own dependency discovery code. [Here's](https://github.com/xmake-io/xmake/tree/master/tests/projects/c%2B%2B/modules) a good place to find usage examples.
+
 ## Standardization
 
 The modules related discussions in WG21 happen in 'SG15', the committee's study group dedicated to C++ tooling. Its mailing list archive is open and available [here](https://lists.isocpp.org/sg15).
+
+## IDEs
+
+### Visual Studio
+As it is tightly integrated with MSVC and MSBuild, Visual Studio can be expected to work quite well with C++ modules. However, since IntelliSense is running
+with a different compiler frontend (EDG), it is not always up to par with MSVC in this regard.
+
+### CLion
+CLion have [anounced coming support](https://blog.jetbrains.com/clion/2022/10/clion-2022-3-eap-cpp20-modules-now-supported/) for C++ modules in their upcoming 2022.3 edition.
 
 ## Libraries
 
@@ -72,3 +88,4 @@ The open source [HiveWE](https://github.com/stijnherfst/HiveWE) uses modules and
 * [C++20 modules with GCC11 by Niall Cooling](https://blog.feabhas.com/2021/08/c20-modules-with-gcc11)
 * [Moving a project to C++ named Modules - Cameron DaCamara](https://devblogs.microsoft.com/cppblog/moving-a-project-to-cpp-named-modules/)
 * [C++20 modules with Clang - Eduardo Costa](https://blog.ecosta.dev/en/tech/cpp-modules-with-clang)
+* [Integrating C++ header units into Office using MSVC (1/n) - Cameron DaCamara & Zachary Henkel](https://devblogs.microsoft.com/cppblog/integrating-c-header-units-into-office-using-msvc-1-n/)
