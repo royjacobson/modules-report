@@ -15,7 +15,7 @@ MSVC have a complete implementation of modules. Support of C++23's
 See [here](https://developercommunity.visualstudio.com/search?space=62&q=modules&stateGroup=active&sort=votes) for a list of reported compiler modules bugs.
 
 ### GCC
-GCC has some support for modules, but it seems to still be pretty buggy and progress has pretty much until very recently (Sep 22). See [here](https://gcc.gnu.org/projects/cxx-status.html#cxx20) for the state of the module papers and [here](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103524) for a list of reported bugs in the current implementation.
+GCC has some support for modules, but it seems to still be pretty buggy and progress has pretty much stalled until very recently (Sep 22). See [here](https://gcc.gnu.org/projects/cxx-status.html#cxx20) for the state of the module papers and [here](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103524) for a list of reported bugs in the current implementation.
 
 ### Clang
 Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.org/cxx_status.html#cxx20) for the state of module papers and [here](https://github.com/llvm/llvm-project/issues?q=is%3Aissue+is%3Aopen+label%3Aclang%3Amodules) for module related issues.
