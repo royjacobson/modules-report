@@ -27,7 +27,7 @@ Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.or
 ### CMake
 There's been some recent progress. You can see changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and  [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
 
-CMake will rely on the module scanning protocol from P1689R5, which means they need compiler support for this. MSVC 17.4 already has it, and there are GCC and Clang patches implementing it in review. With current progress and release schedules, it seems reasonable to expect that in April 2023 CMake 3.26 will be able to compile modules on all latest released MSVC, GCC and Clang!
+CMake will rely on the module scanning protocol from P1689R5, which means they need compiler support for this. MSVC 17.4 already has it, and there are GCC and Clang patches implementing it in review. With current progress and release schedules, it seems possible that in April 2023 CMake 3.26 will be able to compile modules on all latest released MSVC, GCC and Clang!
 
 A stub project for using CMake with MSVC is available [here](https://github.com/GabrielDosReis/cmake-for-modules).
 
@@ -66,14 +66,23 @@ CLion have [anounced coming support](https://blog.jetbrains.com/clion/2022/10/cl
 
 ## Libraries
 
+### ASIO
+There's a modules port by Daniela Engert [here](https://github.com/DanielaE/asio/tree/module).
+
 ### fmtlib
-[fmtlib]() supports modules, but only on windows.
+[fmtlib](https://github.com/fmtlib/fmt) supports modules, but only on windows.
 
 ### Boost
-There was a discussion about modules in boost in April [on their mailing list](https://lists.boost.org/Archives/boost/2022/04/252629.php). Currently there seem to be no progress in this direction.
+There was a discussion about modules in boost in April 2022 [on their mailing list](https://lists.boost.org/Archives/boost/2022/04/252629.php). Currently there seem to be no progress in this direction.
 
 ### async_simple
 There's a development branch that uses modules [here](https://github.com/alibaba/async_simple/tree/CXX20Modules), usable in Clang 15.
+
+### SDL
+There's a modules port by Daniela Engert [here](https://github.com/DanielaE/SDL/tree/module).
+
+### Ser20
+[https://github.com/royjacobson/ser20](Ser20), a C++20 cereal port (by myself), has experimental module support.
 
 ## Usage Examples
 
@@ -90,3 +99,6 @@ The open source [HiveWE](https://github.com/stijnherfst/HiveWE) uses modules and
 * [Moving a project to C++ named Modules - Cameron DaCamara](https://devblogs.microsoft.com/cppblog/moving-a-project-to-cpp-named-modules/)
 * [C++20 modules with Clang - Eduardo Costa](https://blog.ecosta.dev/en/tech/cpp-modules-with-clang)
 * [Integrating C++ header units into Office using MSVC (1/n) - Cameron DaCamara & Zachary Henkel](https://devblogs.microsoft.com/cppblog/integrating-c-header-units-into-office-using-msvc-1-n/)
+
+## Talks
+* [Contemporary C++ in Action - Daniela Engert](https://www.youtube.com/watch?v=yUIFdL3D0Vk)
