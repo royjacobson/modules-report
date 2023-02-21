@@ -25,13 +25,19 @@ Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.or
 ## Build Systems
 
 ### CMake
-There's been some recent progress. You can see changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and  [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
+CMake relies on the module scanning protocol from P1689R5, which means they require dedicated compiler support. MSVC 17.4 already has it, and Clang 16 (due in March 23) is expected to support it as well. A series of equivalent GCC patches seems stuck in review, so most likely will only make it into GCC 14 in 2024. So the new version of CMake 3.26 due in April 2023 will probably be able to compile modules on latest MSVC and Clang.
 
-CMake will rely on the module scanning protocol from P1689R5, which means they need compiler support for this. MSVC 17.4 already has it, and there are GCC and Clang patches implementing it in review. With current progress and release schedules, it seems possible that in April 2023 CMake 3.26 will be able to compile modules on all latest released MSVC, GCC and Clang!
+You can track changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and  [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
 
 A stub project for using CMake with MSVC is available [here](https://github.com/GabrielDosReis/cmake-for-modules).
 
 [This](https://www.youtube.com/watch?v=hkefPcWySzI) recent talk details the goals of the CMake modules support.
+
+For more details, you can read [this](https://www.kitware.com/import-cmake-c20-modules/) recent blog post.
+
+### xmake
+
+xmake seem to have a pretty good support for modules with all the big-three compilers, having rolled out their own dependency discovery code. [Here's](https://github.com/xmake-io/xmake/tree/master/tests/projects/c%2B%2B/modules) a good place to find usage examples.
 
 ### Bazel
 Relevant bazel issue is [here](https://github.com/bazelbuild/bazel/issues/4005).
@@ -46,10 +52,6 @@ Pretty old blogpost [here](https://nibblestew.blogspot.com/2020/11/adding-very-p
 
 ### Build2
 Build2 supports building modules with GCC since the start of 2021. [This](https://build2.org/blog/build2-cxx20-modules-gcc.xhtml) blog post has details on how to use it, and there is a [repository](https://github.com/build2/cxx20-modules-examples) with various usage examples.
-
-### xmake
-
-xmake seem to have a pretty good support for modules with all the big-three compilers, having rolled out their own dependency discovery code. [Here's](https://github.com/xmake-io/xmake/tree/master/tests/projects/c%2B%2B/modules) a good place to find usage examples.
 
 ## Standardization
 
@@ -76,7 +78,7 @@ There's a modules port by Daniela Engert [here](https://github.com/DanielaE/asio
 There was a discussion about modules in boost in April 2022 [on their mailing list](https://lists.boost.org/Archives/boost/2022/04/252629.php). Currently there seem to be no progress in this direction.
 
 ### async_simple
-There's a development branch that uses modules [here](https://github.com/alibaba/async_simple/tree/CXX20Modules), usable in Clang 15.
+There's experimental module support for xmake and cmake, see [here](https://github.com/alibaba/async_simple#c20-modules-support).
 
 ### SDL
 There's a modules port by Daniela Engert [here](https://github.com/DanielaE/SDL/tree/module).
