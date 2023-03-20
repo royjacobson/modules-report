@@ -1,6 +1,6 @@
 # C++20 Modules Status Report
 
-"When can we begin to use modules?"
+> "When can we begin to use modules?"
 
 This document reports about the state of the ongoing effort to use C++20's modules across the C++ ecosystem - compilers, build systems, and (currently almost non-existent) libraries.
 
@@ -10,7 +10,7 @@ This document references a lot of work in progress, and will hopefully get outda
 
 ### MSVC
 MSVC have a complete implementation of modules. Support of C++23's 
-`import std` is has been merged to the STL and is expected to ship in VS2022 17.5, probably in early 2023.
+`import std` is done and was shipped in VS2022 17.5. However, it is recommended to wait until 17.6 because of some serious compiler bugs that were not fixed in time.
 
 See [here](https://developercommunity.visualstudio.com/search?space=62&q=modules&stateGroup=active&sort=votes) for a list of reported compiler modules bugs.
 
@@ -18,22 +18,21 @@ See [here](https://developercommunity.visualstudio.com/search?space=62&q=modules
 GCC has some support for modules, but it seems to still be pretty buggy and progress has pretty much stalled until very recently (Sep 22). See [here](https://gcc.gnu.org/projects/cxx-status.html#cxx20) for the state of the module papers and [here](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103524) for a list of reported bugs in the current implementation.
 
 ### Clang
-Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.org/cxx_status.html#cxx20) for the state of module papers and [here](https://github.com/llvm/llvm-project/issues?q=is%3Aissue+is%3Aopen+label%3Aclang%3Amodules) for module related issues.
+Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.org/cxx_status.html#cxx20) for the state of module papers and [here](https://github.com/llvm/llvm-project/issues?q=is%3Aissue+is%3Aopen+label%3Aclang%3Amodules) for module related issues. There's a lot of very recent progress, so working with upstream versions is probably best (binaries available from [here](https://apt.llvm.org/)).
 
-[This](https://github.com/ChuanqiXu9/stdmodules) project explores modularizing libc++ with Clang.
+[This](https://github.com/ChuanqiXu9/stdmodules) project explores modularizing libc++ with Clang. There's also some preliminary work to build a modular `libc++` [here](https://reviews.llvm.org/D144994).
 
 ## Build Systems
 
 ### CMake
-CMake relies on the module scanning protocol from P1689R5, which means they require dedicated compiler support. MSVC 17.4 already has it, and Clang 16 (due in March 23) is expected to support it as well. A series of equivalent GCC patches seems stuck in review, so most likely will only make it into GCC 14 in 2024. So the new version of CMake 3.26 due in April 2023 will probably be able to compile modules on latest MSVC and Clang.
+CMake relies on the module scanning protocol from P1689R5, which means they require dedicated compiler support. MSVC 17.4 and Clang 16 already support it. A series of GCC patches to add support for P1689R5 seems stuck in review, so most likely will only make it into GCC 14 in 2024. On the CMake side, the currently unreleased version 3.26 will be the first to offer support for that, due in April 2023.
 
-You can track changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and  [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
+You can track changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
 
 A stub project for using CMake with MSVC is available [here](https://github.com/GabrielDosReis/cmake-for-modules).
 
-[This](https://www.youtube.com/watch?v=hkefPcWySzI) recent talk details the goals of the CMake modules support.
-
 For more details, you can read [this](https://www.kitware.com/import-cmake-c20-modules/) recent blog post.
+[This](https://www.youtube.com/watch?v=hkefPcWySzI) talk from about a year ago details the goals of the CMake modules support.
 
 ### xmake
 
@@ -64,7 +63,7 @@ As it is tightly integrated with MSVC and MSBuild, Visual Studio can be expected
 with a different compiler frontend (EDG), it is not always up to par with MSVC in this regard.
 
 ### CLion
-CLion have [anounced coming support](https://blog.jetbrains.com/clion/2022/10/clion-2022-3-eap-cpp20-modules-now-supported/) for C++ modules in their upcoming 2022.3 edition.
+CLion have [announced support](https://blog.jetbrains.com/clion/2022/10/clion-2022-3-eap-cpp20-modules-now-supported/) for C++ modules in their 2022.3 edition.
 
 ## Libraries
 
