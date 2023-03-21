@@ -25,9 +25,11 @@ Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.or
 ## Build Systems
 
 ### CMake
-CMake relies on the module scanning protocol from P1689R5, which means they require dedicated compiler support. MSVC 17.4 and Clang 16 already support it. A series of GCC patches to add support for P1689R5 seems stuck in review, so most likely will only make it into GCC 14 in 2024. On the CMake side, the currently unreleased version 3.26 will be the first to offer support for that, due in April 2023.
+CMake 3.26, released in 14th March, experimentally supports building C++20 modules. However, it relies on the module scanning protocol from P1689R5, which means it also requires dedicated compiler support. MSVC 17.4 and Clang 16 already support it. A series of GCC patches to add support for P1689R5 seems stuck in review, so most likely will only make it into GCC 14 in 2024.
 
-You can track changes relevant to modules [here](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules), and [this](https://gitlab.kitware.com/cmake/cmake/-/issues/18355) is the relevant gitlab issue with some interesting discussions.
+To enable this experimental support, you have to set the magic variable `CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API` ([doc](https://github.com/Kitware/CMake/blob/master/Help/dev/experimental.rst)).
+
+You can track changes relevant to modules on [Kitware's GitLab](https://gitlab.kitware.com/cmake/cmake/-/merge_requests?scope=all&state=all&label_name[]=area%3Acxxmodules). Relevant discussions are on their [discourse](https://discourse.cmake.org/t/c-20-modules-update/7330) or in [this GitLab issue](https://gitlab.kitware.com/cmake/cmake/-/issues/18355).
 
 A stub project for using CMake with MSVC is available [here](https://github.com/GabrielDosReis/cmake-for-modules).
 
