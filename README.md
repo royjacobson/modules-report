@@ -25,7 +25,7 @@ Work on Clang C++20 modules support is ongoing. See [here](https://clang.llvm.or
 ## Build Systems
 
 ### CMake
-CMake 3.26, released in 14th March, experimentally supports building C++20 modules. However, it relies on the module scanning protocol from P1689R5, which means it also requires dedicated compiler support. MSVC 17.4 and Clang 16 already support it. A series of GCC patches to add support for P1689R5 seems stuck in review, so most likely will only make it into GCC 14 in 2024.
+CMake 3.26, released in 14th March, experimentally supports building C++20 modules. However, it relies on the module scanning protocol from P1689R5, which means it also requires dedicated compiler support. MSVC 17.4 and Clang 16 already support it. A series of GCC patches to add support for P1689R5 has now finally been merged to trunk, so expect support in GCC 14, somewhere in 2024Q2.
 
 To enable this experimental support, you have to set the magic variable `CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API` ([doc](https://github.com/Kitware/CMake/blob/master/Help/dev/experimental.rst)).
 
@@ -85,7 +85,7 @@ There's experimental module support for xmake and cmake, see [here](https://gith
 There's a modules port by Daniela Engert [here](https://github.com/DanielaE/SDL/tree/module).
 
 ### Ser20
-[https://github.com/royjacobson/ser20](Ser20), a C++20 cereal port (by myself), has experimental module support.
+[Ser20](https://github.com/royjacobson/ser20), a C++20 cereal port (by myself), has experimental module support.
 
 ## Usage Examples
 
